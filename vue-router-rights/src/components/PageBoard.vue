@@ -1,6 +1,6 @@
 <template>
   <div class="page-board">page-board
-    <router-link />
+    <router-view />
   </div>
 </template>
 
