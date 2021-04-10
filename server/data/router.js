@@ -18,14 +18,14 @@ module.exports = [
     id: 4,
     pid: 3,
     path: 'info_data',
-    name: 'CourseInfoData',
+    name: 'CourseInfodata',
     link: '/course/operate/info_data',
     title: '课程数据'
   },
   {
     id: 5,
     pid: 2,
-    path: '/add',
+    path: 'add',
     name: 'CourseAdd',
     link: '/course/add',
     title: '添加课程'
@@ -49,7 +49,7 @@ module.exports = [
     id: 8,
     pid: 6,
     path: 'add',
-    name: 'studentAdd',
+    name: 'StudentAdd',
     link: '/student/add',
     title: '添加学生'
   },
