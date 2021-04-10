@@ -6,7 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')
-
+const koajwt = require('koa-jwt')
 const index = require('./routes/index')
 
 // error handler
@@ -27,7 +27,22 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
-
+// 错误处理
+app.use((ctx, next) => {
+  return next().catch((err) => {
+    if (err.status == 401){
+        ctx.status = 401
+        ctx.body = 'Protected resource, use Authorization header to get access\n';
+    } else {
+        throw err
+    }
+  })
+})
+app.use(koajwt({
+  secret: 'login_token'
+}).unless({
+  path: [/\/login/]
+}))
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()

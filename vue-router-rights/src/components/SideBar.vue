@@ -1,7 +1,7 @@
 <template>
   <aside class="side-bar">
     <ul>
-      <li><router-link to="/">首页</router-link></li>
+      <li><router-link to="/home">首页</router-link></li>
     </ul>
     <template v-for="(item, index) of $store.state.userRouters">
       <menu-item :item="item" :key="index"/>

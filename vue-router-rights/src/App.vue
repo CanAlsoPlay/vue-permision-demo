@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <mheader />
-    <page-board />
-    <side-bar />
+    <router-view />
+    <div v-if="this.$route.path !== '/login'">
+      <mheader />
+      <page-board />
+      <side-bar />
+    </div>
   </div>
 </template>
 <script>
@@ -14,5 +17,3 @@ export default {
   components: { Mheader, PageBoard, SideBar }
 }
 </script>
-<style>
-</style>
