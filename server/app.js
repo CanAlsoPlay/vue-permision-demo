@@ -38,9 +38,10 @@ app.use((ctx, next) => {
     }
   })
 })
+// 通过 koa-jwt 中间件来进行验证
 app.use(koajwt({
   secret: 'login_token'
-}).unless({
+}).unless({ // unless 可以指定哪些 URL不需要进行 token 验证
   path: [/\/login/]
 }))
 // logger

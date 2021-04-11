@@ -25,7 +25,9 @@ router.post('/login', (ctx, next) => {
     return ctx.body = {
       code: '200',
       token: token,
-      msg: '登录成功'
+      msg: '登录成功',
+      userId: result[0].id,
+      account: result[0].account
     }
   } else {
     return ctx.body = {

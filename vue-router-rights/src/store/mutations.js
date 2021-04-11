@@ -4,5 +4,8 @@ export default {
   },
   setUserRouters (state, userRouters) {
     state.userRouters = userRouters
+  },
+  setUserUid (state, uid) {
+    state.uid = uid
   }
 }

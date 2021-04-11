@@ -1,12 +1,13 @@
 import axios from 'axios'
 import qs from 'qs'
-// axios.interceptors.request.use(config => {
-//   if (localStorage.getItem('userLogintoken')) {
-//     const token = localStorage.getItem('userLogintoken')
-//     config.headers.common.Authorization = 'Bearer ' + token
-//     return config
-//   }
-// })
+// axios 的请求拦截器，对每次请求都进行了取 token 放到 headers 中的操作
+axios.interceptors.request.use(config => {
+  if (localStorage.getItem('userLogintoken')) {
+    const token = localStorage.getItem('userLogintoken')
+    config.headers.common.Authorization = 'Bearer ' + token
+    return config
+  }
+})
 function getUserRouters (uid) {
   return axios({
     url: 'http://localhost:3000/user_router_auth',
@@ -35,7 +36,11 @@ function userLogin (account, password) {
       localStorage.setItem('userLogintoken', res.data.token)
       localStorage.setItem('userLogintoken_exp', new Date().getTime())
       return new Promise((resolve, reject) => {
-        resolve('/home')
+        resolve({
+          path: '/home',
+          userId: res.data.userId,
+          account: res.data.account
+        })
       })
     } else {
       console.log('res400', res.data.msg)
