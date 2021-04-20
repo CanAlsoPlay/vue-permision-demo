@@ -4,7 +4,10 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
-
+const originalReplace = VueRouter.prototype.replace
+VueRouter.prototype.replace = function replace (location) {
+  return originalReplace.call(this, location).catch(err => err)
+}
 const routes = [
   {
     path: '/',

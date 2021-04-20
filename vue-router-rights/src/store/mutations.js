@@ -19,7 +19,10 @@ export default {
   getUserName (state) {
     state.name = localStorage.getItem('userName') || ''
   },
-  deleteUserRouters (state) {
+  deleteUserInfo (state) {
     state.userRouters = []
+    state.uid = ''
+    state.hasAuth = false
+    state.name = ''
   }
 }

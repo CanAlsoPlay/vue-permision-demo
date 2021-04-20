@@ -18,7 +18,7 @@ export default {
       }).then(() => {
         this.$router.replace('/login')
         // 清空缓存数据
-        this.$store.commit('deleteUserRouters')
+        this.$store.commit('deleteUserInfo')
         localStorage.removeItem('userName')
         localStorage.removeItem('uid')
         localStorage.removeItem('userLogintoken')
