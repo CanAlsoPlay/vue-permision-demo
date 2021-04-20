@@ -1,5 +1,6 @@
 export default {
-  uid: 3,
+  uid: '',
   hasAuth: false,
-  userRouters: []
+  userRouters: [],
+  name: ''
 }

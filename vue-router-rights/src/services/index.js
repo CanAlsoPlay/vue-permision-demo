@@ -5,8 +5,8 @@ axios.interceptors.request.use(config => {
   if (localStorage.getItem('userLogintoken')) {
     const token = localStorage.getItem('userLogintoken')
     config.headers.common.Authorization = 'Bearer ' + token
-    return config
   }
+  return config
 })
 function getUserRouters (uid) {
   return axios({
@@ -32,7 +32,6 @@ function userLogin (account, password) {
     data: qs.stringify({ account, password })
   }).then(res => {
     if (res.data.code === '200') {
-      console.log('res200', res)
       localStorage.setItem('userLogintoken', res.data.token)
       localStorage.setItem('userLogintoken_exp', new Date().getTime())
       return new Promise((resolve, reject) => {

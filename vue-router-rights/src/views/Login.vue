@@ -33,10 +33,12 @@ export default {
       const that = this
       userLogin(this.account, this.password)
         .then(function (data) {
-          console.log('userlogin', data)
+          // console.log('userlogin', data)
           that.$store.commit('setUserUid', data.userId)
+          that.$store.commit('setUserName', data.account)
           that.$router.beforeEach(async (to, from, next) => {
             if (!that.$store.state.hasAuth) {
+              console.log('loginbeforeeach')
               // setUserRouters 根据state的uid获取数据
               await that.$store.dispatch('setUserRouters')
               const newRoutes = genetateRouter(that.$store.state.userRouters)
